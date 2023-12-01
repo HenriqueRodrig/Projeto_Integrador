@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+</head>
+<style>
+    body {
+        background-image: url("");
+    }
+</style>
+<body>
+    <h1>Chatbot Sobre Programação</h1>
+    <a href="index.html">IR PARA PAGÍNA INICIAL</a>
+    <img src="https://dular.vteximg.com.br/arquivos/ids/5715330-500-500/image-06da2996519f44c1a29d692819b705f2.jpg?v=638148019076000000" />
+    <a href="file:///C:/Users/928609/Desktop/Chat%20sobre%20Seguran%C3%A7a%20da%20Informa%C3%A7%C3%A3o.html">IR PARA SEGURANÇA DA INFORMAÇÃO</a>
+    <div id="chat-container">
+        <div id="chat-output"></div>
+        <ul id="question-list">
+            <li onclick="redirectToResponse(1)">O que é programação orientada a objetos?</li>
+            <li onclick="redirectToResponse(2)">Qual é a diferença entre linguagens de programação interpretadas e complementadas?</li>
+            <li onclick="redirectToResponse(3)">O que são execões em programação e como são tratadas?</li>
+            <li onclick="redirectToResponse(4)">Explique o conceito de polimorfismo na programação.</li>
+            <li onclick="redirectToResponse(5)">O que são variáveis de escopo local e global?</li>
+            <li onclick="redirectToResponse(6)">Qual é a diferença entre uma linguagem de programação de alto nível e uma de baixo nível?</li>
+            <li onclick="redirectToResponse(7)">O que é versionamento de código e por que é importante?</li>
+            <li onclick="redirectToResponse(8)">Explique a diferença entre uma linguagem de programação compilada e uma interpretada.</li>
+            <li onclick="redirectToResponse(9)">O que é RESTful em desenvolvimento wed?</li>
+        </ul>
+    </div>
+ 
+    <script>
+        const chatContainer = document.getElementById("chat-container");
+        const chatOutput = document.getElementById("chat-output");
+        const userInput = document.getElementById("user-input");
+        const sendButton = document.getElementById("send-button");
+ 
+        // Dicionário de respostas do chatbot
+        const responses = {
+            1: "A programação orientada a objetos é um paradigma de programação que organiza o código em 'objeto', que têm atributos e métodos, promovento a reutilização de código e uma abordagem modular no desenvolvimento de software.",
+            2: "Linguagens interpretadas são executadas linha por linha, enquanto linguagens compiladas são traduzidas inteiramente para a linguagem de máquina antes da execução. Exemplos de linguagens interpretadas incluem Python e JavaScript, enquanto C e Java são linguagens compiladas.",
+            3: "Exceções são eventos que ocorrem durante a execução de um programa e imterrompem o fluxo normal de operação. Elas são geralmente tratadas por meio de blocos try-catch, onde o código que pode gerar uma exceção é colocado dentro do bloco try, e as ações de tratamento são definidas no bloco catch.",
+            4: "Polimorfismo permite que objetos de diferentes tipos sejam tratados de maneira uniforme. Isso pode ocorrer através de sobrecarga de métodos (métodos com o mesmo nome, mas diferentes parâmetros) ou pela implementação de interfaces em linguagens como Java.",
+            5: "variáveis de escopo local são acessíveis apenas dentro do bloco de código em que foram declaradas, enquanto variáveis de escopo global podem ser acessadas de qualquer lugar no programa. O uso adequado de escopo é crucial para evitar conflitos e bugs.",
+            6: "Linguagens de alto nível são mais abstratas e próximas da linguagens de baixo nível são mais próximas da linguagem de máquina e oferecem mais controle sobre o hardware.",
+            7: "Versionamento de código é o controle sistemático de alterações no código-fonte. Ferramentas como Git permitem o rastreamento das modificações ao longo do tempo, facilitando a colaboração entre desenvolvedores e revertendo alterações indesejadas.",
+            8: "Uma linguagem compilada é traduzida integralmente para código de máquina antes da execução, resultando em um arquivo executável.Já uma linguagem interpretada é traduzida linha por linha durante a execução, sem a necessidade de compilar antecipadamente.",
+            9: "RESTful refere-se a serviços web que aderem aos princípios da arquitetura REST (Transferência de Estado Representacional). Eles usam operações HTTP padrão (GET,POST,PUT,DELETE) para realizar ações e são conhecidos por serem simples, escaláveis e interoperáveis.",
+        };
+ 
+        // Função para gerar resposta do chatbot
+        function chatbotResponse(questionNumber) {
+            return responses[questionNumber] || "Desculpe, não entendi o que você disse.";
+        }
+ 
+        // Função para adicionar mensagens ao chat
+        function addMessageToChat(message, sender) {
+            const messageElement = document.createElement("div");
+            messageElement.textContent = `${sender}: ${message}`;
+            chatOutput.appendChild(messageElement);
+        }
+ 
+        // Função para lidar com a tecla "Enter" ao digitar
+        userInput.addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                sendButton.click();
+            }
+        });
+ 
+        // Função para redirecionar para a resposta correspondente ao clicar na pergunta da lista
+        function redirectToResponse(questionNumber) {
+            const botResponse = chatbotResponse(questionNumber);
+            addMessageToChat(botResponse, "Chatbot");
+        }
+    </script>
+</body>
+</html>
